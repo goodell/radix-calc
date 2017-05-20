@@ -1,0 +1,81 @@
+ws
+    = #quiet<[ \t\n\r]+>
+
+hex_digit
+    = [0-9a-fA-F]
+
+oct_digit
+    = [0-7]
+
+nonzero_dec
+    = [1-9]
+
+dec_digit
+    = "0" / nonzero_dec
+
+dec_lit -> i64 = n:$(nonzero_dec (dec_digit / "_")*) {
+    i64::from_str_radix(n, 10).unwrap()
+}
+
+hex_lit -> i64 = "0x" n:$([0-9a-fA-F_]+) {
+    i64::from_str_radix(&*n.replace("_", ""), 16).unwrap()
+}
+
+bin_lit -> i64 = "0b" n:$([01_]+) {
+    i64::from_str_radix(&*n.replace("_", ""), 2).unwrap()
+}
+
+oct_lit -> i64 = "0" n:$([0-7_]+) {
+    i64::from_str_radix(&*n.replace("_", ""), 8).unwrap()
+}
+
+number -> i64 = ws* n:(hex_lit / oct_lit / bin_lit / dec_lit) ws* {
+    n
+}
+
+pub infix_arith -> i64 = #infix<number> {
+    #L x "|" y  { x | y }
+
+    #L x "^" y  { x ^ y }
+
+    #L x "&" y  { x & y }
+
+    #L x ">>" y { x >> y }
+       x "<<" y { x << y }
+
+    #L x "+" y  { x + y }
+       x "-" y  { x - y }
+
+    #L x "*" y  { x * y }
+       x "/" y  { x / y }
+       x "%" y  { x % y }
+
+    #L x "**" y { x.pow(y as u32) }
+}
+
+
+/*
+unop
+    = "~" num_lit
+
+binop
+    = expr ws* "+" ws* expr
+
+simple_token
+    = unop / binop
+
+token
+    = ( simple_token / ws ) token
+
+pub expr
+    = simple_token / token
+*/
+
+/*
+pub number -> i64
+    = n:$([0-9]+) { n.parse().unwrap() }
+
+pub binop -> (i64, i64)
+    = a:number ws* "+" ws* b:number { (a, b) }
+*/
+
