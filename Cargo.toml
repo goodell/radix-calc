@@ -9,3 +9,7 @@ build = "build.rs"
 
 [build-dependencies]
 peg = { version = "0.5" }
+
+[dependencies]
+docopt = "0.7"
+rustc-serialize = "0.3"
