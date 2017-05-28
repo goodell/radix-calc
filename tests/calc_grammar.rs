@@ -56,3 +56,10 @@ fn test_unary() {
     assert_eq!(calc::expr("~5"), Ok(!5));
     assert_eq!(calc::expr("-5"), Ok(-5));
 }
+
+#[test]
+fn test_precedence() {
+    assert_eq!(calc::expr("2 + 5 * 4"), Ok(2 + 5 * 4));
+    assert_eq!(calc::expr("-2 + 5 * 4"), Ok(-2 + 5 * 4));
+    assert_eq!(calc::expr("~2 + 5 * 4"), Ok(!2 + 5 * 4));
+}
