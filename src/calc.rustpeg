@@ -21,7 +21,23 @@ number -> i64 = ws* n:(hex_lit / oct_lit / bin_lit / dec_lit) ws* {
     n
 }
 
-infix_arith -> i64 = #infix<number> {
+// TODO I think there's probably a cleaner way to do this, but rust-peg is a
+// little unclear what happens with parentheses sometimes and I'm not 100%
+// solid with Rust yet [DJG 2017-05-28]
+unary_expr -> i64 = un_op:($("~" / "-"))? n:number {
+    match un_op {
+        Some(u) => {
+            match u {
+                "~" => !n,
+                "-" => -n,
+                _ => panic!("unhandled un_op"),
+            }
+        },
+        None => n,
+    }
+}
+
+infix_arith -> i64 = #infix<unary_expr> {
     #L x "|" y  { x | y }
 
     #L x "^" y  { x ^ y }
@@ -41,6 +57,6 @@ infix_arith -> i64 = #infix<number> {
     #L x "**" y { x.pow(y as u32) }
 }
 
-pub expr -> i64 = infix_arith
+pub expr -> i64 = infix_arith / unary_expr
 
 // TODO add "~" unary op support

@@ -77,9 +77,6 @@ fn main() {
     // TODO:
     // - package the Alfred workflow properly, including icon
     // - add a README.md
-    // - add unary operators:
-    //   + integer negation ("-")
-    //   + bitwise negation ("~")
     // - add parentheses support
     // - add "<icon>hex.png</icon>" (etc.) to xml output
     // - add tests for the binary behavior

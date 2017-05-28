@@ -50,3 +50,9 @@ fn test_infix() {
     // negative test cases
     assert!(calc::expr("5 $ 6").is_err());
 }
+
+#[test]
+fn test_unary() {
+    assert_eq!(calc::expr("~5"), Ok(!5));
+    assert_eq!(calc::expr("-5"), Ok(-5));
+}
