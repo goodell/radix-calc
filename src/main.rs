@@ -33,6 +33,8 @@ fn main() {
     if args.flag_alfred2 {
         match calc::expr(&*expr_str) {
             Ok(expr) => {
+                // the Alfred2 Script Filter XML output format is documented here:
+                // https://www.alfredapp.com/help/workflows/inputs/script-filter/xml/
         print!("\
 <?xml version=\"1.0\"?>
 <items>
