@@ -4,8 +4,8 @@ mod calc {
 
 #[test]
 fn test_binary() {
-    assert_eq!(calc::expr("00"), Ok(0b0));
-    assert_eq!(calc::expr("01"), Ok(0b1));
+    assert_eq!(calc::expr("0b00"), Ok(0b0));
+    assert_eq!(calc::expr("0b01"), Ok(0b1));
     assert_eq!(calc::expr("0b11010"), Ok(0b11010));
 
     // negative test cases
@@ -24,8 +24,8 @@ fn test_decimal() {
 
 #[test]
 fn test_octal() {
-    assert_eq!(calc::expr("00"), Ok(0o0));
-    assert_eq!(calc::expr("01"), Ok(0o1));
+    assert_eq!(calc::expr("0o0"), Ok(0o0));
+    assert_eq!(calc::expr("0o1"), Ok(0o1));
     assert_eq!(calc::expr("0o755"), Ok(0o755));
 
     // negative test cases
