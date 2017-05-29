@@ -6,9 +6,10 @@
 // - add a README.md
 // - add "<icon>hex.png</icon>" (etc.) to xml output
 // - add tests for the binary's behavior
-// - convert all signed integer arithmetic to use "wrapping_add()" and friends to avoid
-//   undefined behavior?
+// - convert all signed integer arithmetic to use "wrapping_add()" and friends to avoid undefined
+//   behavior?
 // - toggle type width/signedness with shift/option/ctrl/cmd modifier keys?
+// - add "--binary"/"--hex"/etc. output format options for the default (non-"--alfred2") mode
 
 extern crate rustc_serialize;
 extern crate docopt;
