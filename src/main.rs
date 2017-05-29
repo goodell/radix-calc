@@ -47,7 +47,7 @@ fn main() {
             Ok(expr) => {
                 // the Alfred2 Script Filter XML output format is documented here:
                 // https://www.alfredapp.com/help/workflows/inputs/script-filter/xml/
-        print!("\
+                print!("\
 <?xml version=\"1.0\"?>
 <items>
   <item arg=\"{0}\" valid=\"YES\" autocomplete=\"{0}\" type=\"default\">
@@ -70,8 +70,16 @@ fn main() {
 ", expr);
             },
             Err(err) => {
-                println!("Error: {}", err);
-                process::exit(1);
+                print!("\
+<?xml version=\"1.0\"?>
+<items>
+  <item arg=\"{0}\" valid=\"NO\" autocomplete=\"{0}\" type=\"default\">
+    <title>{0}</title>
+    <subtitle><![CDATA[{1}]]></subtitle>
+  </item>
+</items>
+", "...", err);
+                // don't "process::exit(1)" here, it makes Alfred mildly angry
             }
         }
     } else {
