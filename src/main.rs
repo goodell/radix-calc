@@ -68,8 +68,9 @@ fn main() {
     <subtitle>(binary)</subtitle>
   </item>
 </items>
-", expr);
-            },
+",
+                       expr);
+            }
             Err(err) => {
                 print!("\
 <?xml version=\"1.0\"?>
@@ -79,7 +80,9 @@ fn main() {
     <subtitle><![CDATA[{1}]]></subtitle>
   </item>
 </items>
-", "...", err);
+",
+                       "...",
+                       err);
                 // don't "process::exit(1)" here, it makes Alfred mildly angry
             }
         }
@@ -87,7 +90,7 @@ fn main() {
         match calc::expr(&*expr_str) {
             Ok(expr) => {
                 println!("{:}", expr);
-            },
+            }
             Err(err) => {
                 println!("Error: {}", err);
                 process::exit(1);
