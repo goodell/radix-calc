@@ -1,5 +1,16 @@
-ws
-    = #quiet<[ \t\n\r]+>
+// Copyright 2017 Dave Goodell <dave@goodell.io>
+// See LICENSE file for license terms (MIT license)
+//
+// A simple grammar for an infix expression arithmetic calculator.
+//
+// All arithmetic is done using i64 types.  At some point I might add support
+// for u64/i32/u32 types.
+//
+// The whitespace token placement in the grammar could probably be optimized
+// for slightly better parsing performance, but this version works well enough
+// for me right now.
+
+_ = #quiet<[ \t\n\r]*>
 
 dec_lit -> i64 = n:$([0-9] ([0-9] / "_")*) {
     i64::from_str_radix(n, 10).unwrap()
@@ -17,27 +28,24 @@ oct_lit -> i64 = "0o" n:$([0-7_]+) {
     i64::from_str_radix(&*n.replace("_", ""), 8).unwrap()
 }
 
-number -> i64 = ws* n:(hex_lit / oct_lit / bin_lit / dec_lit) ws* {
+num_lit -> i64 = n:(hex_lit / oct_lit / bin_lit / dec_lit) {
     n
 }
 
-// TODO I think there's probably a cleaner way to do this, but rust-peg is a
-// little unclear what happens with parentheses sometimes and I'm not 100%
-// solid with Rust yet [DJG 2017-05-28]
-unary_expr -> i64 = un_op:($("~" / "-"))? n:number {
+unary_expr -> i64 = _ un_op:$([-~]) _ n:atom {
     match un_op {
-        Some(u) => {
-            match u {
-                "~" => !n,
-                "-" => -n,
-                _ => panic!("unhandled un_op"),
-            }
-        },
-        None => n,
+        "~" => !n,
+        "-" => -n,
+        _ => panic!("unhandled un_op"),
     }
 }
 
-infix_arith -> i64 = #infix<unary_expr> {
+// see suggestion at https://github.com/kevinmehall/rust-peg/issues/167
+atom -> i64 = _ "(" _ v:infix_arith _ ")" _ { v }
+            / _ v:unary_expr _ { v }
+            / _ v:num_lit _ { v }
+
+infix_arith -> i64 = #infix<atom> {
     #L x "|" y  { x | y }
 
     #L x "^" y  { x ^ y }
@@ -57,6 +65,4 @@ infix_arith -> i64 = #infix<unary_expr> {
     #L x "**" y { x.pow(y as u32) }
 }
 
-pub expr -> i64 = infix_arith / unary_expr
-
-// TODO add "~" unary op support
+pub expr -> i64 = _ v:(infix_arith / unary_expr / num_lit) _ { v }

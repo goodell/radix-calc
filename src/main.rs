@@ -1,3 +1,15 @@
+// Copyright 2017 Dave Goodell <dave@goodell.io>
+// See LICENSE file for license terms (MIT license)
+
+// TODO:
+// - package the Alfred workflow properly, including icon
+// - add a README.md
+// - add "<icon>hex.png</icon>" (etc.) to xml output
+// - add tests for the binary's behavior
+// - convert all signed integer arithmetic to use "wrapping_add()" and friends to avoid
+//   undefined behavior?
+// - toggle type width/signedness with shift/option/ctrl/cmd modifier keys?
+
 extern crate rustc_serialize;
 extern crate docopt;
 
@@ -73,11 +85,4 @@ fn main() {
             }
         }
     }
-
-    // TODO:
-    // - package the Alfred workflow properly, including icon
-    // - add a README.md
-    // - add parentheses support
-    // - add "<icon>hex.png</icon>" (etc.) to xml output
-    // - add tests for the binary behavior
 }

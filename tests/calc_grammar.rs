@@ -1,3 +1,6 @@
+// Copyright 2017 Dave Goodell <dave@goodell.io>
+// See LICENSE file for license terms (MIT license)
+
 mod calc {
     include!(concat!(env!("OUT_DIR"), "/calc.rs"));
 }
@@ -33,6 +36,17 @@ fn test_octal() {
 }
 
 #[test]
+fn test_hex() {
+    assert_eq!(calc::expr("0x0"), Ok(0x0));
+    assert_eq!(calc::expr("0x1"), Ok(0x1));
+    assert_eq!(calc::expr("0xfeed"), Ok(0xfeed));
+    assert_eq!(calc::expr("0xdeadbeef"), Ok(0xdeadbeef));
+
+    // negative test cases
+    assert!(calc::expr("0x7g9").is_err());
+}
+
+#[test]
 fn test_infix() {
     assert_eq!(calc::expr("0 + 0"), Ok(0 + 0));
     assert_eq!(calc::expr("0+ 0"), Ok(0 + 0));
@@ -60,6 +74,26 @@ fn test_unary() {
 #[test]
 fn test_precedence() {
     assert_eq!(calc::expr("2 + 5 * 4"), Ok(2 + 5 * 4));
+    assert_eq!(calc::expr("2 + 5 * ~4"), Ok(2 + 5 * !4));
+    assert_eq!(calc::expr("-2+5*4"), Ok(-2 + 5 * 4));
     assert_eq!(calc::expr("-2 + 5 * 4"), Ok(-2 + 5 * 4));
     assert_eq!(calc::expr("~2 + 5 * 4"), Ok(!2 + 5 * 4));
+}
+
+#[test]
+fn test_parens() {
+    assert_eq!(calc::expr("(5 * 4)"), Ok((5 * 4)));
+    assert_eq!(calc::expr("(5 + 4) * 2"), Ok((5 + 4) * 2));
+    assert_eq!(calc::expr("(5 + 4) * 2**2"), Ok((5 + 4) * 4));
+    assert_eq!(calc::expr("(5**2 + 4) * 2**2"), Ok((25 + 4) * 4));
+}
+
+#[test]
+fn test_bitwise() {
+    assert_eq!(calc::expr("0b11111111 | 0b00000000"), Ok(0b11111111));
+    assert_eq!(calc::expr("0b00000000 | 0b00000000"), Ok(0b00000000));
+    assert_eq!(calc::expr("0b11111111 & 0b00000000"), Ok(0b00000000));
+    assert_eq!(calc::expr("0b00000000 & 0b00000000"), Ok(0b00000000));
+    assert_eq!(calc::expr("0b11111111 & 0b11111111"), Ok(0b11111111));
+    assert_eq!(calc::expr("0b10101010 ^ 0b11110000"), Ok(0b10101010 ^ 0b11110000));
 }
