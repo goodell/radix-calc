@@ -28,9 +28,9 @@ oct_lit -> i64 = "0o" n:$([0-7_]+) {
     i64::from_str_radix(&*n.replace("_", ""), 8).unwrap()
 }
 
-num_lit -> i64 = n:(hex_lit / oct_lit / bin_lit / dec_lit) {
+num_lit -> i64 = n:#quiet<(hex_lit / oct_lit / bin_lit / dec_lit)> {
     n
-}
+} / #expected("numeric literal")
 
 unary_expr -> i64 = _ un_op:$([-~]) _ n:atom {
     match un_op {
