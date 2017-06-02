@@ -54,18 +54,22 @@ fn main() {
   <item arg=\"{0}\" valid=\"YES\" autocomplete=\"{0}\" type=\"default\">
     <title>{0}</title>
     <subtitle>(decimal)</subtitle>
+    <icon>dec.png</icon>
   </item>
   <item arg=\"0x{0:x}\" valid=\"YES\" autocomplete=\"0x{0:x}\" type=\"default\">
     <title>0x{0:x}</title>
     <subtitle>(hexadecimal)</subtitle>
+    <icon>hex.png</icon>
   </item>
   <item arg=\"0o{0:o}\" valid=\"YES\" autocomplete=\"0o{0:o}\" type=\"default\">
     <title>0o{0:o}</title>
     <subtitle>(octal)</subtitle>
+    <icon>oct.png</icon>
   </item>
   <item arg=\"0b{0:b}\" valid=\"YES\" autocomplete=\"0b{0:b}\" type=\"default\">
-    <title>0b{0:o}</title>
+    <title>0b{0:b}</title>
     <subtitle>(binary)</subtitle>
+    <icon>bin.png</icon>
   </item>
 </items>
 ",
