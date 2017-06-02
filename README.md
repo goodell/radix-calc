@@ -39,7 +39,7 @@ One of the main reasons that `radix-calc` was developed was to power an
 of the time of this writing I only have have access to 10.12 "Sierra"
 machines).
 
-(**TODO** screenshots go here)
+![Alfred Workflow screenshot "5+0b1_0110"](img/radix-calc-alfred1.png)
 
 ## Future Enhancements
 
