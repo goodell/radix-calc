@@ -4,3 +4,11 @@ language: rust
 os:
     - debian
     - osx
+
+env:
+    - PATH=$TRAVIS_BUILD_DIR/target/debug:$TRAVIS_BUILD_DIR/tests/bats:$PATH
+
+script:
+    - cargo build --verbose --all
+    - cargo test --verbose --all
+    - ./tests/test-binary.bats
