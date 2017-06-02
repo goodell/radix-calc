@@ -42,11 +42,15 @@ machines).
 - toggle type width/signedness with shift/option/ctrl/cmd modifier keys?
 - add `--binary`/`--hex`/etc. output format options for the default
   (non-`--alfred2`) mode
+- generate the Alfred workflow as a `cargo` command/target
 
 ## Author
 
 Dave Goodell <dave@goodell.io>
 Twitter: [@davidjgoodell](https://twitter.com/davidjgoodell)
+
+Icons are from [Aiconica](http://aiconica.net/search/Calculator), licensed CC0
+1.0.
 
 ## License
 
