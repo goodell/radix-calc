@@ -1,9 +1,9 @@
 [package]
-name = "alfred-rust-calc"
-version = "0.0.0"
+name = "radix-calc"
+version = "0.1.0"
 authors = [ "Dave Goodell <dave@goodell.io>" ]
 license = "MIT"
-#repository = "https://github.com/kevinmehall/rust-peg"
+repository = "https://github.com/goodell/radix-calc"
 description = "a programmer's calculator for Alfred implemented in Rust"
 build = "build.rs"
 

@@ -1,5 +1,5 @@
 extern crate peg;
 
 fn main() {
-    peg::cargo_build("src/calc.rustpeg");
+    peg::cargo_build("src/radix-calc.rustpeg");
 }

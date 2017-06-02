@@ -1,16 +1,6 @@
 // Copyright 2017 Dave Goodell <dave@goodell.io>
 // See LICENSE file for license terms (MIT license)
 
-// TODO:
-// - package the Alfred workflow properly, including icon
-// - add a README.md
-// - add "<icon>hex.png</icon>" (etc.) to xml output
-// - add tests for the binary's behavior
-// - convert all signed integer arithmetic to use "wrapping_add()" and friends to avoid undefined
-//   behavior?
-// - toggle type width/signedness with shift/option/ctrl/cmd modifier keys?
-// - add "--binary"/"--hex"/etc. output format options for the default (non-"--alfred2") mode
-
 extern crate rustc_serialize;
 extern crate docopt;
 
@@ -18,16 +8,16 @@ use std::process;
 use docopt::Docopt;
 
 const USAGE: &'static str = "
-Usage: alfred-rust-calc [--alfred2] [--] <expr>...
-       alfred-rust-calc (-h | --help)
+Usage: radix-calc [--alfred2] [--] <expr>...
+       radix-calc (-h | --help)
 
 Options:
     -h,--help    Show this screen.
     --alfred2    Emit Alfred2-style workflow XML.
 ";
 
-mod calc {
-    include!(concat!(env!("OUT_DIR"), "/calc.rs"));
+mod radix_calc {
+    include!(concat!(env!("OUT_DIR"), "/radix-calc.rs"));
 }
 
 #[derive(Debug, RustcDecodable)]
@@ -44,7 +34,7 @@ fn main() {
     let expr_str = args.arg_expr.join(" ");
 
     if args.flag_alfred2 {
-        match calc::expr(&*expr_str) {
+        match radix_calc::expr(&*expr_str) {
             Ok(expr) => {
                 // the Alfred2 Script Filter XML output format is documented here:
                 // https://www.alfredapp.com/help/workflows/inputs/script-filter/xml/
@@ -87,7 +77,7 @@ fn main() {
             }
         }
     } else {
-        match calc::expr(&*expr_str) {
+        match radix_calc::expr(&*expr_str) {
             Ok(expr) => {
                 println!("{:}", expr);
             }
