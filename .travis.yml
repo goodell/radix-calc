@@ -1,3 +1,6 @@
 # should run "cargo build --verbose" and "cargo test --verbose" by default
 # reference: https://docs.travis-ci.com/user/languages/rust/
 language: rust
+os:
+    - debian
+    - osx
