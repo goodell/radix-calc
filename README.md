@@ -1,3 +1,5 @@
+[![Travis CI build status](https://travis-ci.org/goodell/radix-calc.svg?branch=master)](https://travis-ci.org/goodell/radix-calc)
+
 # radix-calc
 
 This is a simple programmer's calculator written in Rust.  It can be used
