@@ -13,6 +13,15 @@ $ radix-calc 5+5
 
 $ radix-calc '5 + 0xa - 0o17 * 0b11'
 -30
+
+$ radix-calc --bin "0b0110 ^ 0xc"
+0b1010
+
+$ radix-calc --all "0b0110 ^ 0xc"
+10
+0xa
+0o12
+0b1010
 ```
 
 For better ergonomics I often abbreviate `radix-calc` as `rc` in my shell
@@ -40,8 +49,6 @@ machines).
 - convert all signed integer arithmetic to use `wrapping_add()` and friends to
   avoid undefined behavior?
 - toggle type width/signedness with shift/option/ctrl/cmd modifier keys?
-- add `--binary`/`--hex`/etc. output format options for the default
-  (non-`--alfred2`) mode
 - generate the Alfred workflow as a `cargo` command/target
 
 ## Author

@@ -8,12 +8,18 @@ use std::process;
 use docopt::Docopt;
 
 const USAGE: &'static str = "
-Usage: radix-calc [--alfred2] [--] <expr>...
+A programmer's calculator supporting multiple radixes.
+
+Usage: radix-calc [--alfred2] [--all|--bin|--hex|--oct] [--] <expr>...
        radix-calc (-h | --help)
 
 Options:
     -h,--help    Show this screen.
     --alfred2    Emit Alfred2-style workflow XML.
+    --all        Format the result in decimal, hex, octal, and binary
+    --bin        Format the result in binary (e.g., 0b0110)
+    --hex        Format the result in hexadecimal (e.g., 0xcafe)
+    --oct        Format the result in Rust-style octal (e.g., 0o755)
 ";
 
 mod radix_calc {
@@ -23,6 +29,10 @@ mod radix_calc {
 #[derive(Debug, RustcDecodable)]
 struct Args {
     flag_alfred2: bool,
+    flag_all: bool,
+    flag_bin: bool,
+    flag_hex: bool,
+    flag_oct: bool,
     arg_expr: Vec<String>,
 }
 
@@ -79,7 +89,20 @@ fn main() {
     } else {
         match radix_calc::expr(&*expr_str) {
             Ok(expr) => {
-                println!("{:}", expr);
+                if args.flag_all {
+                    println!("{:}", expr);
+                    println!("0x{:x}", expr);
+                    println!("0o{:o}", expr);
+                    println!("0b{:b}", expr);
+                } else if args.flag_bin {
+                    println!("0b{:b}", expr);
+                } else if args.flag_hex {
+                    println!("0x{:x}", expr);
+                } else if args.flag_oct {
+                    println!("0o{:o}", expr);
+                } else {
+                    println!("{:}", expr);
+                }
             }
             Err(err) => {
                 println!("Error: {}", err);
