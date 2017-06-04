@@ -43,6 +43,11 @@ machines).
 
 ![Alfred Workflow screenshot "5+0b1_0110"](img/radix-calc-alfred1.png)
 
+To install it, just open the
+[`radix-calc.alfredworkflow` file](https://github.com/goodell/radix-calc/raw/master/alfred/radix-calc.alfredworkflow)
+either downloaded directly from GitHub or from a cloned version of the
+repository.
+
 ## Future Enhancements
 
 - convert all signed integer arithmetic to use `wrapping_add()` and friends to
