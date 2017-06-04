@@ -6,6 +6,11 @@ license = "MIT"
 repository = "https://github.com/goodell/radix-calc"
 description = "a programmer's calculator for Alfred implemented in Rust"
 build = "build.rs"
+exclude = [
+    "img/*",
+    "icons/*",
+    "radix-calc.alfredworkflow",
+]
 
 [build-dependencies]
 peg = { version = "0.5" }
