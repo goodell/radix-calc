@@ -45,9 +45,6 @@ machines).
 
 ## Future Enhancements
 
-- package the Alfred workflow properly, including icon
-- add `<icon>hex.png</icon>` (etc.) to xml output
-- add tests for the binary's behavior (using [Cram](https://bitheap.org/cram/)?)
 - convert all signed integer arithmetic to use `wrapping_add()` and friends to
   avoid undefined behavior?
 - toggle type width/signedness with shift/option/ctrl/cmd modifier keys?
