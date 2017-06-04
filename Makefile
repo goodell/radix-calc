@@ -7,8 +7,8 @@ no_arg:
 	@false
 
 build:
-	cargo build
-	cargo build --release
+	cargo build --quiet
+	cargo build --quiet --release
 	zip -q -j alfred/radix-calc.alfredworkflow \
 	    alfred/info.plist \
 	    alfred/1B5B938D-D584-4467-BBB3-9C41F6C212F6.png \
@@ -17,8 +17,8 @@ build:
 	    target/release/radix-calc
 
 test: build
-	cargo test
-	cargo test --release
+	cargo test --quiet -- --quiet
+	cargo test --quiet --release -- --quiet
 	PATH=`pwd`/target/release:`pwd`/tests/bats:$$PATH ./tests/test-binary.bats
 
 clean:
