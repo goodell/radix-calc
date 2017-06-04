@@ -1,6 +1,6 @@
 [package]
 name = "radix-calc"
-version = "1.0.0"
+version = "1.0.1"
 authors = [ "Dave Goodell <dave@goodell.io>" ]
 license = "MIT"
 readme = "README.md"
@@ -15,7 +15,7 @@ exclude = [
 ]
 
 [badges]
-travis-ci = { repository = "https://travis-ci.org/goodell/radix-calc", branch = "master" }
+travis-ci = { repository = "goodell/radix-calc", branch = "master" }
 
 [build-dependencies]
 peg = { version = "0.5" }
