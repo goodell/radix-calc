@@ -7,8 +7,10 @@ extern crate docopt;
 use std::process;
 use docopt::Docopt;
 
-const USAGE: &'static str = "
+const USAGE: &'static str = concat!("
 A programmer's calculator supporting multiple radixes.
+
+Version ", env!("CARGO_PKG_VERSION"), "
 
 Usage: radix-calc [--alfred2] [--all|--bin|--hex|--oct] [--] <expr>...
        radix-calc (-h | --help)
@@ -20,7 +22,7 @@ Options:
     --bin        Format the result in binary (e.g., 0b0110)
     --hex        Format the result in hexadecimal (e.g., 0xcafe)
     --oct        Format the result in Rust-style octal (e.g., 0o755)
-";
+");
 
 mod radix_calc {
     include!(concat!(env!("OUT_DIR"), "/radix-calc.rs"));
