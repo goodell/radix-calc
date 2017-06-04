@@ -14,7 +14,7 @@ Usage: radix-calc [--alfred2] [--all|--bin|--hex|--oct] [--] <expr>...
        radix-calc (-h | --help)
 
 Options:
-    -h,--help    Show this screen.
+    -h, --help   Show this screen.
     --alfred2    Emit Alfred2-style workflow XML.
     --all        Format the result in decimal, hex, octal, and binary
     --bin        Format the result in binary (e.g., 0b0110)

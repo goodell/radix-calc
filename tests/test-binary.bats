@@ -61,4 +61,31 @@
     [[ "$result" = "$expected" ]]
 }
 
+# This covers a regression where the space was missing between "-h" and "-help"
+# in the "Options:" section
+#
+# In the future it may be desirable to match the Usage message in a fuzzy
+# manner so that we don't have to update this test every single time we tweak
+# the Usage output.
+@test "-h output" {
+    result="$(radix-calc -h)"
+    expected="A programmer's calculator supporting multiple radixes.
+
+Usage: radix-calc [--alfred2] [--all|--bin|--hex|--oct] [--] <expr>...
+       radix-calc (-h | --help)
+
+Options:
+    -h, --help   Show this screen.
+    --alfred2    Emit Alfred2-style workflow XML.
+    --all        Format the result in decimal, hex, octal, and binary
+    --bin        Format the result in binary (e.g., 0b0110)
+    --hex        Format the result in hexadecimal (e.g., 0xcafe)
+    --oct        Format the result in Rust-style octal (e.g., 0o755)"
+    [[ "$result" = "$expected" ]]
+
+    # full --help should give the same results
+    result="$(radix-calc --help)"
+    [[ "$result" = "$expected" ]]
+}
+
 # vim: set ft=sh :
