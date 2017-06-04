@@ -9,6 +9,7 @@ no_arg:
 build:
 	cargo build --quiet
 	cargo build --quiet --release
+	sed -e "s/{RADIX_CALC_README}/$$(grep '^version =' Cargo.toml)/" alfred/info.plist.in > alfred/info.plist
 	zip -q -j alfred/radix-calc.alfredworkflow \
 	    alfred/info.plist \
 	    alfred/1B5B938D-D584-4467-BBB3-9C41F6C212F6.png \

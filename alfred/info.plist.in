@@ -84,7 +84,7 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string></string>
+	<string>{RADIX_CALC_README}</string>
 	<key>uidata</key>
 	<dict>
 		<key>1B5B938D-D584-4467-BBB3-9C41F6C212F6</key>
