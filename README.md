@@ -60,7 +60,7 @@ Twitter: [@davidjgoodell](https://twitter.com/davidjgoodell)
 
 The main calculator icon is from
 [Aiconica](http://aiconica.net/search/Calculator), licensed CC0 1.0.  The
-dec/hex/oct/bin icons original and also CC0 1.0.
+dec/hex/oct/bin icons are original and also CC0 1.0.
 
 ## License
 
