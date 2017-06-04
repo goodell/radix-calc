@@ -48,7 +48,6 @@ machines).
 - convert all signed integer arithmetic to use `wrapping_add()` and friends to
   avoid undefined behavior?
 - toggle type width/signedness with shift/option/ctrl/cmd modifier keys?
-- generate the Alfred workflow as a `cargo` command/target
 
 ## Author
 

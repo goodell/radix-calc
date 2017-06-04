@@ -1,6 +1,6 @@
 [package]
 name = "radix-calc"
-version = "0.1.0"
+version = "0.2.0"
 authors = [ "Dave Goodell <dave@goodell.io>" ]
 license = "MIT"
 readme = "README.md"
@@ -11,8 +11,7 @@ description = "a CLI programmer's calculator written in Rust, with an Alfred wor
 build = "build.rs"
 exclude = [
     "img/*",
-    "icons/*",
-    "radix-calc.alfredworkflow",
+    "alfred/*",
 ]
 
 [badges]
