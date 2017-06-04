@@ -1,0 +1,7 @@
+The files in this directory come from the "bats" project (Bash Automated
+Testing System).  They are licensed under the MIT license.  For more
+information, see the project's GitHub page:
+
+    https://github.com/sstephenson/bats
+
+[2017-06-04 Dave Goodell]
