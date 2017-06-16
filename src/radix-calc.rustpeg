@@ -13,7 +13,7 @@
 _ = #quiet<[ \t\n\r]*>
 
 dec_lit -> i64 = n:$([0-9] ([0-9] / "_")*) {
-    i64::from_str_radix(n, 10).unwrap()
+    i64::from_str_radix(&*n.replace("_", ""), 10).unwrap()
 }
 
 hex_lit -> i64 = "0x" n:$([0-9a-fA-F_]+) {

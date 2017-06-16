@@ -10,6 +10,7 @@ fn test_binary() {
     assert_eq!(radix_calc::expr("0b00"), Ok(0b0));
     assert_eq!(radix_calc::expr("0b01"), Ok(0b1));
     assert_eq!(radix_calc::expr("0b11010"), Ok(0b11010));
+    assert_eq!(radix_calc::expr("0b11_010"), Ok(0b11_010));
 
     // negative test cases
     assert!(radix_calc::expr("0b5").is_err());
@@ -20,6 +21,7 @@ fn test_decimal() {
     assert_eq!(radix_calc::expr("0"), Ok(0));
     assert_eq!(radix_calc::expr("4"), Ok(4));
     assert_eq!(radix_calc::expr("123456"), Ok(123456));
+    assert_eq!(radix_calc::expr("123_456"), Ok(123_456));
 
     // negative test cases
     assert!(radix_calc::expr("1c").is_err());
@@ -30,6 +32,7 @@ fn test_octal() {
     assert_eq!(radix_calc::expr("0o0"), Ok(0o0));
     assert_eq!(radix_calc::expr("0o1"), Ok(0o1));
     assert_eq!(radix_calc::expr("0o755"), Ok(0o755));
+    assert_eq!(radix_calc::expr("0o755_755"), Ok(0o755_755));
 
     // negative test cases
     assert!(radix_calc::expr("0o789").is_err());
@@ -41,6 +44,7 @@ fn test_hex() {
     assert_eq!(radix_calc::expr("0x1"), Ok(0x1));
     assert_eq!(radix_calc::expr("0xfeed"), Ok(0xfeed));
     assert_eq!(radix_calc::expr("0xdeadbeef"), Ok(0xdeadbeef));
+    assert_eq!(radix_calc::expr("0xdead_beef"), Ok(0xdead_beef));
 
     // negative test cases
     assert!(radix_calc::expr("0x7g9").is_err());
