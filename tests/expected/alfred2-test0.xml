@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<items>
+  <item arg="25" valid="YES" autocomplete="25" type="default">
+    <title>25</title>
+    <subtitle>copy+paste as "25"</subtitle>
+    <mod key="shift" subtitle="copy+paste as &quot;25&quot;" valid="yes" arg="25"/>
+    <icon>dec.png</icon>
+  </item>
+  <item arg="0x19" valid="YES" autocomplete="0x19" type="default">
+    <title>0x19</title>
+    <subtitle>copy+paste as "0x19"</subtitle>
+    <mod key="shift" subtitle="copy+paste as &quot;0x19&quot;" valid="yes" arg="0x19"/>
+    <icon>hex.png</icon>
+  </item>
+  <item arg="0o31" valid="YES" autocomplete="0o31" type="default">
+    <title>0o31</title>
+    <subtitle>copy+paste as "0o31"</subtitle>
+    <mod key="shift" subtitle="copy+paste as &quot;0o31&quot;" valid="yes" arg="0o31"/>
+    <icon>oct.png</icon>
+  </item>
+  <item arg="0b11001" valid="YES" autocomplete="0b11001" type="default">
+    <title>0b11001</title>
+    <subtitle>copy+paste as "0b11001"</subtitle>
+    <mod key="shift" subtitle="copy+paste as &quot;0b11001&quot;" valid="yes" arg="0b11001"/>
+    <icon>bin.png</icon>
+  </item>
+</items>

@@ -35,29 +35,11 @@
 
 @test "--alfred2 output" {
     result="$(radix-calc --alfred2 '5*5')"
-    expected="<?xml version=\"1.0\"?>
-<items>
-  <item arg=\"25\" valid=\"YES\" autocomplete=\"25\" type=\"default\">
-    <title>25</title>
-    <subtitle>(decimal)</subtitle>
-    <icon>dec.png</icon>
-  </item>
-  <item arg=\"0x19\" valid=\"YES\" autocomplete=\"0x19\" type=\"default\">
-    <title>0x19</title>
-    <subtitle>(hexadecimal)</subtitle>
-    <icon>hex.png</icon>
-  </item>
-  <item arg=\"0o31\" valid=\"YES\" autocomplete=\"0o31\" type=\"default\">
-    <title>0o31</title>
-    <subtitle>(octal)</subtitle>
-    <icon>oct.png</icon>
-  </item>
-  <item arg=\"0b11001\" valid=\"YES\" autocomplete=\"0b11001\" type=\"default\">
-    <title>0b11001</title>
-    <subtitle>(binary)</subtitle>
-    <icon>bin.png</icon>
-  </item>
-</items>"
+    expected=$(cat tests/expected/alfred2-test0.xml)
+    [[ "$result" = "$expected" ]]
+
+    result="$(radix-calc --alfred2 '1234 << 33')"
+    expected=$(cat tests/expected/alfred2-test1.xml)
     [[ "$result" = "$expected" ]]
 }
 

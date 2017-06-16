@@ -1,6 +1,6 @@
 [package]
 name = "radix-calc"
-version = "1.0.2"
+version = "1.0.3"
 authors = [ "Dave Goodell <dave@goodell.io>" ]
 license = "MIT"
 readme = "README.md"

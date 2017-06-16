@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<items>
+  <item arg="10599979286528" valid="YES" autocomplete="10_599_979_286_528" type="default">
+    <title>10_599_979_286_528</title>
+    <subtitle>copy+paste as "10599979286528"</subtitle>
+    <mod key="shift" subtitle="copy+paste as &quot;10_599_979_286_528&quot;" valid="yes" arg="10_599_979_286_528"/>
+    <icon>dec.png</icon>
+  </item>
+  <item arg="0x9a400000000" valid="YES" autocomplete="0x9a4_0000_0000" type="default">
+    <title>0x9a4_0000_0000</title>
+    <subtitle>copy+paste as "0x9a400000000"</subtitle>
+    <mod key="shift" subtitle="copy+paste as &quot;0x9a4_0000_0000&quot;" valid="yes" arg="0x9a4_0000_0000"/>
+    <icon>hex.png</icon>
+  </item>
+  <item arg="0o232200000000000" valid="YES" autocomplete="0o232_200_000_000_000" type="default">
+    <title>0o232_200_000_000_000</title>
+    <subtitle>copy+paste as "0o232200000000000"</subtitle>
+    <mod key="shift" subtitle="copy+paste as &quot;0o232_200_000_000_000&quot;" valid="yes" arg="0o232_200_000_000_000"/>
+    <icon>oct.png</icon>
+  </item>
+  <item arg="0b10011010010000000000000000000000000000000000" valid="YES" autocomplete="0b1001_10100100_00000000_00000000_00000000_00000000" type="default">
+    <title>0b1001_10100100_00000000_00000000_00000000_00000000</title>
+    <subtitle>copy+paste as "0b10011010010000000000000000000000000000000000"</subtitle>
+    <mod key="shift" subtitle="copy+paste as &quot;0b1001_10100100_00000000_00000000_00000000_00000000&quot;" valid="yes" arg="0b1001_10100100_00000000_00000000_00000000_00000000"/>
+    <icon>bin.png</icon>
+  </item>
+</items>
